@@ -1,5 +1,5 @@
-import 'package:firstflutter/HomePage.dart';
 import 'package:flutter/material.dart';
+import 'HomePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,16 +9,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _isObscure = true;
 
-  Widget myText(String label, bool isObsecure){
+  Widget _buildTextField(String label, bool isPassword) {
     return Container(
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextField(
-        obscureText: isObsecure,
+        obscureText: isPassword && _isObscure,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: label,
+          hintText: label,
+          contentPadding: EdgeInsets.all(15),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          suffixIcon: isPassword
+              ? IconButton(
+            onPressed: () {
+              setState(() {
+                _isObscure = !_isObscure;
+              });
+            },
+            icon: Icon(
+              _isObscure ? Icons.visibility : Icons.visibility_off,
+            ),
+          )
+              : null,
         ),
       ),
     );
@@ -27,26 +40,33 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Aplikasiku"),),
+      appBar: AppBar(title: Text("Aplikasiku")),
       body: Center(
-        child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //Username
-              myText("Username", false),
-              myText("Password", true),
-              //Button Login
+              _buildTextField("Username", false),
+              _buildTextField("Password", true),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MovieCatalog()),
-                    );
-                  }, child: Text('Login')),
-                  SizedBox(width: 20,),
-                  ElevatedButton(onPressed: () {}, child: Text('Register')),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                      );
+                    },
+                    child: Text('Login'),
+                  ),
+                  SizedBox(width: 20),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Register'),
+                  ),
                 ],
               )
             ],

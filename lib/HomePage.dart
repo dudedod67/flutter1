@@ -1,82 +1,80 @@
 import 'package:flutter/material.dart';
+import 'MovieModel.dart';
 
-class Movie {
-  final String title;
-  final String imageUrl;
-  final double rating;
-  final int releaseYear;
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-  Movie({
-    required this.title,
-    required this.imageUrl,
-    required this.rating,
-    required this.releaseYear,
-  });
+  @override
+  _HomePageState createState() => _HomePageState();
 }
 
-class MovieCatalog extends StatelessWidget {
-  final List<Movie> movies = [
-    Movie(
-      title: "Spider-Man: Across the Spider-Verse",
-      imageUrl: "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg",
-      rating: 4.5,
-      releaseYear: 2021,
-    ),
-    Movie(
-      title: "Coco",
-      imageUrl: "https://lumiere-a.akamaihd.net/v1/images/p_coco_19736_fd5fa537.jpeg",
-      rating: 4.8,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Raya and The Last Dragon",
-      imageUrl: "https://images.soco.id/724-Raya_&_The_Last_Dragon_Premier_&_Theater_Poster.jpg.jpeg",
-      rating: 3.9,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Frozen",
-      imageUrl: "https://lumiere-a.akamaihd.net/v1/images/p_frozen_18373_3131259c.jpeg?region=0%2C0%2C540%2C810",
-      rating: 4.6,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Despicable Me",
-      imageUrl: "https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_.jpg",
-      rating: 4.7,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Finding Nemo",
-      imageUrl: "https://lumiere-a.akamaihd.net/v1/images/p_findingnemo_19752_05271d3f.jpeg?region=0%2C0%2C540%2C810",
-      rating: 4.8,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Finding Dori",
-      imageUrl: "https://lumiere-a.akamaihd.net/v1/images/p_findingdory_19754_4d6d2025.jpeg?region=0%2C0%2C540%2C810",
-      rating: 4,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Pinocchio",
-      imageUrl: "https://lumiere-a.akamaihd.net/v1/images/p_pinocchio_19879_d6304938.jpeg?region=0%2C0%2C540%2C810",
-      rating: 5,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Encanto",
-      imageUrl: "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/94d5552678a9ab653531ea156360ad1798d6c573d4068e1fb492f4e82bc9d668._RI_TTW_.jpg",
-      rating: 5,
-      releaseYear: 2022,
-    ),
-    Movie(
-      title: "Luca",
-      imageUrl: "https://lumiere-a.akamaihd.net/v1/images/id_88b38ce1.jpeg",
-      rating: 4,
-      releaseYear: 2022,
-    ),
-  ];
+class _HomePageState extends State<HomePage> {
+  List<movie>? movieList = [];
+
+  TextEditingController _searchController = TextEditingController();
+  List<movie>? _searchResults = [];
+
+  @override
+  void initState() {
+    super.initState();
+    movie movie1 = new movie(
+        "Raya and The Last Dragon",
+        "2014",
+        "Rating: 4.6",
+        "https://akcdn.detik.net.id/community/media/visual/2023/04/21/raya-and-the-last-dragon-2021dok-disney-hotstar.jpeg?w=620&q=90",
+        "Monster jahat dikenal sebagai Druun mengancam kehidupan masyarakat daratan.");
+
+
+    movie movie2 = new movie(
+        "Brave ",
+        "2012",
+        "Rating: 4.4",
+        "https://akcdn.detik.net.id/community/media/visual/2023/04/21/brave-2012dokdisney-pixar.jpeg?w=620&q=90",
+        "Merida, putri Raja Skotlandia Fergus dan Ratu Elinor dikenal sebagai wanita pemberani di kerajaannya.");
+
+    movie movie3 = new movie(
+        "Moana ",
+        "2016",
+        "Rating: 5",
+        "https://akcdn.detik.net.id/community/media/visual/2023/04/21/moana-2016dok-disney.jpeg?w=620&q=90",
+        "Seorang remaja perempuan bernama Moana memutuskan untuk pergi berpetualang dengan berlayar untuk menyelamatkan bangsanya.");
+
+    movie movie4 = new movie(
+        "Tangled",
+        "2010",
+        "Rating: 5",
+        "https://akcdn.detik.net.id/community/media/visual/2023/04/21/tangled-2010dok-disney.jpeg?w=620&q=90",
+        "Flynn adalah seorang bandit yang menjadi buronan kerajaan karena mencuri mahkota. Ia kemudian bersembunyi di menara Rapunzel.");
+
+    movie movie5 = new movie(
+        "Toy Story 2 ",
+        "1999",
+        "Rating: 5",
+        "https://akcdn.detik.net.id/community/media/visual/2023/04/21/toy-story-2-1999dok-disney-pixar.jpeg?w=620&q=90",
+        "Woody dicuri oleh penjual mainan Al McWhiggin yang biasa menjual mainan ke kolektor. Buzz Lightyear dan kawan Woody mencoba menyelamatkannya.");
+
+    movie movie6 = new movie(
+        "Big Hero 6",
+        "2014",
+        "Rating: 5",
+        "https://akcdn.detik.net.id/community/media/visual/2023/04/21/big-hero-6-2014dokdisney.jpeg?w=620&q=90",
+        "Ahli robot Hiro yang tinggal di kota San Fransokyo. Hiro memiliki teman dekat yaitu Baymax, sebuah robot yang tujuannya menjaga keselamatan orang.");
+
+    movie movie7 = new movie(
+        "Coco",
+        "2017",
+        "Rating: 5",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjnUgkONg7sYDd6sDa9hxRxexV4fuwqayLai1pJciClNoe6we0",
+        "Miguel, dilarang bermusik oleh leluhur keluarganya, memasuki Tanah Orang Mati untuk menemukan kakek buyutnya, seorang penyanyi legendaris.");
+
+    movieList?.add(movie1);
+    movieList?.add(movie2);
+    movieList?.add(movie3);
+    movieList?.add(movie4);
+    movieList?.add(movie5);
+    movieList?.add(movie6);
+    movieList?.add(movie7);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,30 +82,95 @@ class MovieCatalog extends StatelessWidget {
       appBar: AppBar(
         title: Text("Movie Catalog"),
       ),
-      body: ListView.builder(
-        itemCount: movies.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Container(
-              child: Image.network(movies[index].imageUrl, fit: BoxFit.cover),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _searchController.text.isEmpty
+                  ? movieList?.length ?? 0
+                  : _searchResults?.length ?? 0,
+              itemBuilder: (BuildContext context, int index) {
+                final movieData = _searchController.text.isEmpty
+                    ? movieList![index]
+                    : _searchResults![index];
+
+                return Container(
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            movieData.imageUrl,
+                            width: 110,
+                            height: 147,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              movieData.name,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Tahun Rilis: ${movieData.date}",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black45,
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Wrap(
+                              children: [
+                                Text(
+                                  movieData.rating,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 2),
+                            Wrap(
+                              children: [
+                                Text(
+                                  movieData.desc,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-            title: Text(movies[index].title),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Rating: ${movies[index].rating}"),
-                Text("Release Year: ${movies[index].releaseYear}"),
-              ],
-            ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: MovieCatalog(),
-  ));
 }
